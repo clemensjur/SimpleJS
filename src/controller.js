@@ -1,19 +1,22 @@
 async function render() {
-	let components = await fetchComponents();
-	//console.log(components);
+  let components = await fetchComponents();
+  //console.log(components);
 
-	components.forEach(async component => {
-		document.getElementById(trimFromChar(".", component)).innerHTML = await getContent("./components/" + component);
-		console.log(component, trimFromChar(".", component));
-	});
+  components.forEach(async component => {
+    for (const elem of document.getElementsByClassName(
+      trimFromChar(".", component)
+    )) {
+      console.log(elem);
+      elem.innerHTML = await getContent("./components/" + component);
+    }
+  });
 }
 
 //Asynchronous funcion to get all components as JSON and render them to the DOM
 async function fetchComponents() {
-  return fetch("index.php?json")
-    .then(resp => {
-      return resp.json();
-    });
+  return fetch("index.php?json").then(resp => {
+    return resp.json();
+  });
 }
 
 //Function to remove all characters from a given string starting at the first occurrence of the provided chracter
