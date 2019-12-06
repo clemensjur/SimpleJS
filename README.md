@@ -10,3 +10,5 @@ To use the framework just create a new HTML-file in the "components"-folder and 
 ### TODO
 - [ ] Fix recursion issue in components
 - [ ] Add functionality for subfolders in the components directory
+- [ ] Add templates folder for already prepared components to be ready to use
+- [x] Add functionality for a HTML element to have multiple components associated with it

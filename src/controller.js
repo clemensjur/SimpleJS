@@ -7,7 +7,7 @@ async function render() {
       trimFromChar(".", component)
     )) {
       console.log(elem);
-      elem.innerHTML = await getContent("./components/" + component);
+      elem.innerHTML += await getContent("./components/" + component);
     }
   });
 }
