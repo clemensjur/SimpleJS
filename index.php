@@ -1,5 +1,5 @@
 <?php
-$dir = new DirectoryIterator("./src/components");
+$dir = new DirectoryIterator("./components");
 $files = [];
 foreach ($dir as $file) {
     if ($file == "." || $file == "..") {
