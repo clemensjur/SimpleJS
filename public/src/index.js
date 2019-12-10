@@ -1,21 +1,26 @@
-async function render() {
-  let components = await fetchComponents();
-  //console.log(components);
+document.addEventListener("DOMContentLoaded", async () => {
+  await render();
+});
 
-  components.forEach(async component => {
-    for (const elem of document.getElementsByClassName(
-      trimFromChar(".", component)
-    )) {
-      console.log(elem);
-      elem.innerHTML += await getContent("./components/" + component);
-    }
-  });
+async function render() {
+  let siteElements = Array.from(document.body.getElementsByTagName("*"));
+
+    siteElements.forEach(elem => {
+      let components = elem.classList;
+      components.forEach(async component => {
+        try {
+          elem.insertAdjacentHTML("beforeend", await getContent("./components/" + component + ".html"));
+        } catch (error) {
+          console.log("Invald component!");
+        }
+      });
+    });
 }
 
 //Asynchronous funcion to get all components as JSON and render them to the DOM
 async function fetchComponents() {
-  return fetch("index.php?json").then(resp => {
-    return resp.json();
+  return fetch("./json").then(res => {
+    return res.json();
   });
 }
 
@@ -36,3 +41,4 @@ async function getContent(fileName) {
     return response.text();
   });
 }
+
