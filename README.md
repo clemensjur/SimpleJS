@@ -20,3 +20,4 @@ To use the framework just create a new HTML-file in the **components**-folder an
 - [x] Switch from PHP tp NodeJS
 - [ ] Add MVC Concept
 - [ ] Remove dependency of server.js-file
+- [ ] [Optional] Implement Service Workers for cache handling

@@ -5,12 +5,10 @@ const fs = require("fs");
 
 const port = 8080;
 
-let components = fs.readdirSync("./public/components");
-
 app.use(express.static("./public"));
 
 app.get('/json', (req, res) => {
-    res.json(components);
+    res.json(fs.readdirSync("./public/app/components"));
 });
 
 app.listen(port, () => {

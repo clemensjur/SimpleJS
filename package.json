@@ -1,21 +1,23 @@
 {
-  "name": "simplejs_nodejs",
-  "version": "1.0.0",
+  "name": "simplejs",
+  "version": "2.0.0",
   "description": "A simple, light-weight, component-based Javascript \"Framework\" I wrote because Angular was too heavy-weight for small applications",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "\"\""
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Clemens Jurkowitsch",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "http": "0.0.0",
     "http-server": "^0.12.0"
-  }
+  },
+  "devDependencies": {}
 }
