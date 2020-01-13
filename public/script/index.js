@@ -1,23 +1,4 @@
-//Service Worker Code
-
-if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/serviceWorker.js").then(
-            registration => {
-                // Registration was successful
-                console.log(
-                    "ServiceWorker registration successful with scope: ",
-                    registration.scope
-                );
-            },
-            err => {
-                // registration failed :(
-                console.log("ServiceWorker registration failed: ", err);
-            }
-        );
-    });
-}
-
+const VIEWS = "app/components/views/";
 
 //Create an EventListener to wait for the DOM to be loaded
 //And wait for the page content to be rendered 
@@ -39,19 +20,12 @@ async function render() {
             try {
                 elem.insertAdjacentHTML(
                     "beforeend",
-                    await getContent("./app/components/" + component + ".html")
+                    await getContent(VIEWS + component + ".html")
                 );
             } catch (error) {
-                console.log("Invald component!");
+                console.log("Invalid component!");
             }
         });
-    });
-}
-
-//Asynchronous funcion to get all components as JSON and render them to the DOM
-async function fetchComponents() {
-    return fetch("./json").then(res => {
-        return res.json();
     });
 }
 
