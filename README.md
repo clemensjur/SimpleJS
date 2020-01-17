@@ -65,11 +65,11 @@ In case you decide to set up your own server you just need to set the webroot to
 ### TODO
 
 * [x] Fix recursion issue in components
-* [ ] [Next] Add templates folder for already prepared components to be ready to use
+* [ ] [Current] Add templates folder for already prepared components to be ready to use
 * [x] Add functionality for a HTML element to have multiple components associated with it
 * [x] Switch from PHP tp NodeJS
-* [ ] [Current] Add MVC Concept
+* [x] Add MVC Concept
 * [x] Remove dependency of server.js-file
 * [x] [Optional] Implement Service Workers for cache handling
 * [x] ~~Implement the option to use JSON-files as model of a component~~
-* [ ] Implement HTML-Markup variable replacement.
+* [ ] [Next] Implement HTML-Markup variable replacement.
