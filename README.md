@@ -9,7 +9,7 @@ Just clone the repo from Github and you're good to go!
 ## Setup
 
 For the framework to function properly you need to run the **server.js**-file.
-**This is not necessarily needed. You could also run your own server with the webroot set to the _public_-folder.
+**This is not necessarily needed. You could also run your own server with the webroot set to the _public_-folder.**
 
 ## Usage
 
