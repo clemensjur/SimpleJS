@@ -15,15 +15,15 @@ For the framework to function properly you need to run the **server.js**-file.
 
 This framework splits components into three pieces:
 
-* **M**odel   
+### **M**odel   
 
 This part contains all the data that is needed for the component to function. For it to work you have to provide a Javascript-file inside the **components/models**-folder that includes variables or functions which will be used to replaced the spaceholders placed in the component-specific HTML-Markup. In the case of functions the replacement-value will be the return-value of the function.   
 
-* **V**iew   
+### **V**iew   
 
 This part contains all the HTML-Markup that the component will display. The view of a component has to be provided as HTML-file inside the **components/views**-folder.   
 
-* **C**ontroller   
+### **C**ontroller   
 
 This part of the component contains all the logic to make it work properly. It has to be provided as Javascript-file inside the **components/controllers**-folder.   
 
