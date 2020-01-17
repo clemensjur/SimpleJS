@@ -2,7 +2,7 @@ const VIEWS = "app/components/views/";
 
 //Create an EventListener to wait for the DOM to be loaded
 //And wait for the page content to be rendered 
-initRender = () => {
+export function initRender() {
     document.addEventListener("DOMContentLoaded", async () => {
     await render();
   });
@@ -46,5 +46,3 @@ getContent = async (fileName) => {
         return response.text();
     });
 }
-
-export { initRender };
