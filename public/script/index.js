@@ -2,16 +2,16 @@ const VIEWS = "app/components/views/";
 
 //Create an EventListener to wait for the DOM to be loaded
 //And wait for the page content to be rendered 
-document.addEventListener("DOMContentLoaded", async () => {
+initRender = () => {
+    document.addEventListener("DOMContentLoaded", async () => {
     await render();
-});
-
-
+  });
+}
 //For each element of the page check if it has a class that is associated with a component
 //If so wait for the content of the component-file to be fetched 
 //Then load the component template inside the element
 //If not log that it is an invalid component
-async function render() {
+render = async () => {
     let siteElements = Array.from(document.body.getElementsByTagName("*"));
 
     siteElements.forEach(elem => {
@@ -30,7 +30,7 @@ async function render() {
 }
 
 //Function to remove all characters from a given string starting at the first occurrence of the provided chracter
-function trimFromChar(char, text) {
+trimFromChar = (char, text) => {
     let strArr = text.split("");
     for (let i = 0; i < strArr.length; i++) {
         if (strArr[i] == char) {
@@ -41,8 +41,10 @@ function trimFromChar(char, text) {
 }
 
 //Async function to read the content of a file
-async function getContent(fileName) {
+getContent = async (fileName) => {
     return fetch(fileName).then(response => {
         return response.text();
     });
 }
+
+export { initRender };
