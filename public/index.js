@@ -2,7 +2,7 @@ const VIEWS = "app/components/views/";
 
 //Create an EventListener to wait for the DOM to be loaded
 //And wait for the page content to be rendered 
-export function initRender() {
+export let initRender = () => {
     document.addEventListener("DOMContentLoaded", async () => {
     await render();
   });
@@ -11,26 +11,29 @@ export function initRender() {
 //If so wait for the content of the component-file to be fetched 
 //Then load the component template inside the element
 //If not log that it is an invalid component
-async function render() {
+let render = async () => {
     let siteElements = Array.from(document.body.getElementsByTagName("*"));
-
-    siteElements.forEach(elem => {
-        let components = elem.classList;
-        components.forEach(async component => {
-            try {
-                elem.insertAdjacentHTML(
-                    "beforeend",
-                    await getContent(VIEWS + component + ".html")
-                );
-                interpolate(component);
-            } catch (error) {
-                console.log("Invalid component!");
-            }
-        });
+    let components = await fetch("./components").then(res => {
+      return res.text();
     });
-}
+    console.log("Components:", components);
+  
+    siteElements.forEach(elem => {
+      let classes = elem.classList;
+      classes.forEach(async compClass => {
+        if (components.includes(compClass)) {
+          elem.insertAdjacentHTML(
+            "beforeend",
+            await getContent(VIEWS + compClass + ".html")
+          );
+        } else {
+          //console.log(compClass + ".html: Invalid Component!");
+        }
+      });
+    });
+  };
 
-async function interpolate(component) {
+let interpolate = async (component) => {
 
     let content = await getContent(VIEWS + component + ".html");
 
@@ -43,7 +46,7 @@ async function interpolate(component) {
 }
 
 //Function to remove all characters from a given string starting at the first occurrence of the provided chracter
-function trimFromChar (char, text) {
+let trimFromChar = (char, text) => {
     let strArr = text.split("");
     for (let i = 0; i < strArr.length; i++) {
         if (strArr[i] == char) {
@@ -54,7 +57,7 @@ function trimFromChar (char, text) {
 }
 
 //Async function to read the content of a file
-async function getContent(fileName) {
+let getContent = async (fileName) => {
     return fetch(fileName).then(response => {
         return response.text();
     });
