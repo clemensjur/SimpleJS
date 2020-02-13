@@ -1,3 +1,3 @@
-import { initRender } from "./index.js";
+import { initRender } from "../index.js";
 
 initRender();

@@ -11,7 +11,7 @@ export function initRender() {
 //If so wait for the content of the component-file to be fetched 
 //Then load the component template inside the element
 //If not log that it is an invalid component
-render = async () => {
+async function render() {
     let siteElements = Array.from(document.body.getElementsByTagName("*"));
 
     siteElements.forEach(elem => {
@@ -22,6 +22,7 @@ render = async () => {
                     "beforeend",
                     await getContent(VIEWS + component + ".html")
                 );
+                interpolate(component);
             } catch (error) {
                 console.log("Invalid component!");
             }
@@ -29,8 +30,20 @@ render = async () => {
     });
 }
 
+async function interpolate(component) {
+
+    let content = await getContent(VIEWS + component + ".html");
+
+    let regex = /{{ ?.+ ?}}/g;
+    let found = content.match(regex);
+
+    content.replace(content.match(regex));
+
+    console.log(found);
+}
+
 //Function to remove all characters from a given string starting at the first occurrence of the provided chracter
-trimFromChar = (char, text) => {
+function trimFromChar (char, text) {
     let strArr = text.split("");
     for (let i = 0; i < strArr.length; i++) {
         if (strArr[i] == char) {
@@ -41,7 +54,7 @@ trimFromChar = (char, text) => {
 }
 
 //Async function to read the content of a file
-getContent = async (fileName) => {
+async function getContent(fileName) {
     return fetch(fileName).then(response => {
         return response.text();
     });
